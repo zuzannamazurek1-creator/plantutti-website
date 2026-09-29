@@ -111,4 +111,4 @@ collections:
         widget: "text"
       - name: "body"
         label: "Treść wpisu"
-        widget: "markdown"
+        widget: "markdown" 
