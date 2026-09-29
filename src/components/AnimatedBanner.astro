@@ -1,0 +1,61 @@
+---
+// Animowany, przewijający się pasek pod headerem, jak w oryginale (3x powtórzony tekst/ikona się przewija w pętli).
+// Oryginalny plik SVG: images/decorative/banner-scroll-1.svg (pobierz przez skrypt z Etapu 1)
+const text = "Wegańskie promocje nie tylko dla wegan";
+---
+
+<div class="banner-track" aria-hidden="true">
+  <div class="banner-content">
+    {Array.from({ length: 8 }).map(() => (
+      <span class="banner-item">
+        <img src="/images/decorative/hero-triangle.svg" alt="" width="20" height="20" />
+        {text}
+      </span>
+    ))}
+  </div>
+  <div class="banner-content">
+    {Array.from({ length: 8 }).map(() => (
+      <span class="banner-item">
+        <img src="/images/decorative/hero-triangle.svg" alt="" width="20" height="20" />
+        {text}
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .banner-track {
+    display: flex;
+    overflow: hidden;
+    background: var(--color-primary);
+    color: var(--color-white);
+    white-space: nowrap;
+    padding: 10px 0;
+  }
+  .banner-content {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    animation: scroll 55s linear infinite;
+  }
+  .banner-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0 24px;
+  }
+  .banner-item img {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .banner-content { animation: none; }
+  }
+</style>

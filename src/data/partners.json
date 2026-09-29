@@ -1,0 +1,237 @@
+[
+  {
+    "slug": "evergreen",
+    "name": "Evergreen",
+    "discount_percent": 7,
+    "logo": "images/partners/evergreen/logo.jpg",
+    "photos": [
+      "images/partners/evergreen/produkt-1.png",
+      "images/partners/evergreen/produkt-2.png",
+      "images/partners/evergreen/produkt-3.png"
+    ],
+    "description": "Evergreen – Twój sklep wegański. Wybieraj z ponad 1200 wegańskich produktów każdego dnia.",
+    "code": "Plantutti",
+    "conditions": "nie obejmuje produktów przecenionych i zestawów",
+    "url": "https://www.evergreen.pl/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Spożywcze"
+  },
+  {
+    "slug": "bezmiesny-miesny",
+    "name": "Bezmięsny Mięsny",
+    "discount_percent": 10,
+    "logo": "images/partners/bezmiesny-miesny/logo.png",
+    "photos": [
+      "images/partners/bezmiesny-miesny/produkt-1.png",
+      "images/partners/bezmiesny-miesny/produkt-2.png",
+      "images/partners/bezmiesny-miesny/produkt-3.png"
+    ],
+    "description": "Pierwszy w Polsce w 100% roślinny rzeźnik, oferujący roślinne alternatywy dla mięsnych produktów.",
+    "code": "Plantutti10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://bezmiesnymiesny.pl/kategoria/produkty",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Spożywcze"
+  },
+  {
+    "slug": "nesea",
+    "name": "Nesea",
+    "discount_percent": 7,
+    "logo": "images/partners/nesea/logo.png",
+    "photos": [
+      "images/partners/nesea/produkt-1.jpg",
+      "images/partners/nesea/produkt-2.jpg",
+      "images/partners/nesea/produkt-3.png"
+    ],
+    "description": "Nesea to drogeria internetowa, gdzie znajdziesz tylko wegańskie i CF kosmetyki, chemię domową czy słodycze.",
+    "code": "PLANTUTTI7",
+    "conditions": "na nieprzecenione produkty",
+    "url": "https://nesea.pl/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Kosmetyki"
+  },
+  {
+    "slug": "estimon",
+    "name": "Estimon",
+    "discount_percent": 13,
+    "logo": "images/partners/estimon/logo.svg",
+    "photos": [
+      "images/partners/estimon/produkt-1.png",
+      "images/partners/estimon/produkt-2.jpeg",
+      "images/partners/estimon/produkt-3.png"
+    ],
+    "description": "Estimon to polska marka torebek wykonanych z wegańskich skór: np. z kukurydzy.",
+    "code": "Plantutti13",
+    "conditions": "na nieprzecenione produkty",
+    "url": "https://estimon.com/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Akcesoria"
+  },
+  {
+    "slug": "wygodna-dieta",
+    "name": "Wygodna Dieta",
+    "discount_percent": 10,
+    "logo": "images/partners/wygodna-dieta/logo.png",
+    "photos": [
+      "images/partners/wygodna-dieta/produkt-1.webp",
+      "images/partners/wygodna-dieta/produkt-2.webp",
+      "images/partners/wygodna-dieta/produkt-3.webp"
+    ],
+    "description": "Wygodna dieta to catering dietetyczny oferujący wegańską dietę pudełkową",
+    "code": "PLANTUTTI10",
+    "conditions": "na wegańską dietę, min. 10 dni",
+    "url": "https://www.wygodnadieta.pl/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Usługi"
+  },
+  {
+    "slug": "flowertint",
+    "name": "FlowerTint",
+    "discount_percent": 10,
+    "logo": "images/partners/flowertint/logo.png",
+    "photos": [
+      "images/partners/flowertint/produkt-1.jpg",
+      "images/partners/flowertint/produkt-2.jpg",
+      "images/partners/flowertint/produkt-3.jpg"
+    ],
+    "description": "FlowerTint to wegańskie i CF farby i produkty do pielęgnacji włosów.",
+    "code": "PLANTUTTI10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://purobio.com.pl/92-farby-flowertint",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Kosmetyki"
+  },
+  {
+    "slug": "purobio",
+    "name": "puroBIO",
+    "discount_percent": 10,
+    "logo": "images/partners/purobio/logo.png",
+    "photos": [
+      "images/partners/purobio/produkt-1.jpg",
+      "images/partners/purobio/produkt-2.jpg",
+      "images/partners/purobio/produkt-3.jpg"
+    ],
+    "description": "puroBIO to wegańskie, organiczne kosmetyki kolorowe i do pielęgnacji",
+    "code": "PLANTUTTI10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://purobio.com.pl/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Kosmetyki"
+  },
+  {
+    "slug": "agazi",
+    "name": "Agazi",
+    "discount_percent": 10,
+    "logo": "images/partners/agazi/logo.svg",
+    "photos": [
+      "images/partners/agazi/produkt-1.jpeg",
+      "images/partners/agazi/produkt-2.jpg",
+      "images/partners/agazi/produkt-3.jpg"
+    ],
+    "description": "Agazi to polska marka butów wykonanych z innowacyjnych materiałow, np. wegańskiej skóry z jabłek.",
+    "code": "PLANTUTTI10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://agazi.eu/?currency=PLN&lang=pl",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Moda"
+  },
+  {
+    "slug": "moj-wybor",
+    "name": "Mój wybór",
+    "discount_percent": 15,
+    "logo": "images/partners/moj-wybor/logo.png",
+    "photos": [
+      "images/partners/moj-wybor/produkt-1.png",
+      "images/partners/moj-wybor/produkt-2.png",
+      "images/partners/moj-wybor/produkt-3.png"
+    ],
+    "description": "Mój wybór to wegański manicure w Warszawie.",
+    "code": "Plantutti15",
+    "conditions": "na pierwszą wizytę",
+    "url": "https://www.instagram.com/mojwybor/",
+    "button_label": "Zobacz profil",
+    "is_special_instagram_card": true,
+    "verified_date": "2026-08-03",
+    "category": "Usługi"
+  },
+  {
+    "slug": "naturini",
+    "name": "Naturini",
+    "discount_percent": 10,
+    "logo": "images/partners/naturini/logo.png",
+    "photos": [
+      "images/partners/naturini/produkt-1.png",
+      "images/partners/naturini/produkt-2.png",
+      "images/partners/naturini/produkt-3.png"
+    ],
+    "description": "Naturini to oleje, przyprawy, bakalie, kremy orzechowe.",
+    "code": "Plantutti10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://naturini.pl/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Spożywcze"
+  },
+  {
+    "slug": "auna",
+    "name": "Auna",
+    "discount_percent": 10,
+    "logo": "images/partners/auna/logo.svg",
+    "photos": [
+      "images/partners/auna/produkt-1.png",
+      "images/partners/auna/produkt-2.jpg",
+      "images/partners/auna/produkt-3.jpg"
+    ],
+    "description": "Auna to naturalne, ręcznie robione i wegańskie kosmetyki, świece i produkty dla psów.",
+    "code": "Plantutti10",
+    "conditions": "nie obejmuje zestawów",
+    "url": "https://aunavegan.com/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Kosmetyki"
+  },
+  {
+    "slug": "bohema",
+    "name": "BOHEMA",
+    "discount_percent": 10,
+    "logo": "images/partners/bohema/logo.png",
+    "photos": [
+      "images/partners/bohema/produkt-1.png",
+      "images/partners/bohema/produkt-2.png",
+      "images/partners/bohema/produkt-3.png"
+    ],
+    "description": "BOHEMA to polska marka butów, torebek i akcesoriów z roślinnych skór.",
+    "code": "Plantutti10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://pl.bohemaclothing.com/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Moda"
+  },
+  {
+    "slug": "supersonic",
+    "name": "SUPERSONIC Food",
+    "discount_percent": 10,
+    "logo": "images/partners/supersonic/logo.png",
+    "photos": [
+      "images/partners/supersonic/produkt-1.png",
+      "images/partners/supersonic/produkt-2.png",
+      "images/partners/supersonic/produkt-3.png"
+    ],
+    "description": "SUPERSONIC Food to zdrowe posiłki oraz kremy orzechowe, dostępne także w wersji wegańskiej.",
+    "code": "Plantutti10",
+    "conditions": "na wszystkie produkty",
+    "url": "https://supersonicfood.com/",
+    "button_label": "Kopiuj i przejdź do sklepu",
+    "verified_date": "2026-08-03",
+    "category": "Spożywcze"
+  }
+]

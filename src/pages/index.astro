@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PartnerCard from '../components/PartnerCard.astro';
+import partnersData from '../data/partners.json';
+
+const partners = (partnersData as any[]).slice().sort((a, b) =>
+  a.name.localeCompare(b.name, 'pl', { sensitivity: 'base' })
+);
+---
+
+<Layout
+  title="Plantutti - Wegańskie promocje nie tylko dla wegan"
+  description="Szukasz promocji na roślinne, wegańskie i zrównoważone produkty? Wejdź na Plantutti i oszczędzaj korzystając z rabatów na produkty zgodne z Twoimi wartościami."
+>
+  <section class="codes container" id="kody-rabatowe">
+    <h2>Kody rabatowe</h2>
+    <p class="lead">Poznaj naszych Partnerów i skorzystaj ze specjalnych ofert</p>
+
+    <div class="cards-grid" id="cards-grid">
+      {partners.map((partner) => <PartnerCard partner={partner} />)}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .codes { padding: 56px 24px 80px; }
+  .codes h2 {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  .lead { text-align: center; color: var(--color-text-muted); margin-bottom: 40px; font-size: 1.05rem; }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px 24px;
+  }
+</style>
+
+<script>
+  // --- Kluczowy mechanizm: kopiowanie kodu do schowka + otwarcie sklepu ---
+
+  function fallbackCopy(text: string): boolean {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.setAttribute('readonly', '');
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  async function copyText(text: string): Promise<boolean> {
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        return fallbackCopy(text);
+      }
+    }
+    return fallbackCopy(text);
+  }
+
+  function showToast(button: HTMLButtonElement, ok: boolean) {
+    const wrapper = button.closest('.card-actions');
+    const toast = wrapper?.querySelector<HTMLElement>('.copy-confirm');
+    if (!toast) return;
+    toast.textContent = ok ? 'Skopiowano!' : 'Nie udało się skopiować — kod: ' + (button.dataset.code ?? '');
+    toast.hidden = false;
+    button.classList.toggle('copied', ok);
+    setTimeout(() => {
+      toast.hidden = true;
+      button.classList.remove('copied');
+    }, 2200);
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.btn-copy').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const code = btn.dataset.code ?? '';
+      const url = btn.dataset.url ?? '#';
+      const partner = btn.dataset.partner ?? '';
+
+      // 1) Otwieramy nowa karte OD RAZU, synchronicznie w handlerze kliknięcia —
+      //    to wazne dla Safari/iOS: jesli window.open wywolamy po "await" (np. po
+      //    zakonczeniu kopiowania do schowka), przegladarka moze zablokowac popup
+      //    jako "niepowiazany z akcja uzytkownika". Karta oryginalna NIE jest zamykana,
+      //    wiec potwierdzenie "Skopiowano!" nadal bedzie widoczne na tej stronie.
+      window.open(url, '_blank', 'noopener');
+
+      // 2) Kopiujemy kod do schowka (asynchronicznie) i pokazujemy potwierdzenie.
+      copyText(code).then((ok) => showToast(btn, ok));
+
+      // 3) Hak pod analitykę kliknięć (Etap 4: Umami/Plausible) — bezpieczny no-op,
+      //    dopóki nie podłączymy właściwego skryptu.
+      (window as any).umami?.track?.('copy_code', { partner });
+      (window as any).plausible?.('copy_code', { props: { partner } });
+    });
+  });
+
+  // --- Karuzela zdjec produktow (strzalki < / >) na zdjeciu kazdej karty ---
+  document.querySelectorAll<HTMLElement>('.media').forEach((wrapper) => {
+    const photos = Array.from(wrapper.querySelectorAll<HTMLImageElement>('.carousel-photo'));
+    if (photos.length <= 1) return;
+    let index = 0;
+
+    function show(newIndex: number) {
+      photos[index].hidden = true;
+      index = (newIndex + photos.length) % photos.length;
+      photos[index].hidden = false;
+    }
+
+    wrapper.querySelector('.carousel-prev')?.addEventListener('click', () => show(index - 1));
+    wrapper.querySelector('.carousel-next')?.addEventListener('click', () => show(index + 1));
+  });
+</script>

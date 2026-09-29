@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout
+  title="Blog — Plantutti"
+  description="Porady, ciekawostki i przewodniki o wegańskich promocjach, oszczędzaniu i roślinnym stylu życia."
+>
+  <section class="container blog-index">
+    <h1>Blog</h1>
+    <p class="lead">Porady, ciekawostki i przewodniki dla roślinożerców</p>
+
+    <div class="post-grid">
+      {posts.map((post) => (
+        <a href={`/blog-posts/${post.id.replace(/\.md$/, '')}`} class="post-card">
+          <div class="post-image" aria-hidden="true"></div>
+          <div class="post-body">
+            <span class="post-category">{post.data.category}</span>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.excerpt}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .blog-index { padding: 56px 24px 80px; }
+  .blog-index h1 { text-align: center; }
+  .lead { text-align: center; color: var(--color-text-muted); margin-bottom: 40px; }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 28px 24px;
+  }
+  .post-card {
+    display: block;
+    text-decoration: none;
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .post-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+  }
+  .post-image {
+    aspect-ratio: 16 / 10;
+    background: var(--color-light-green);
+  }
+  .post-body { padding: 18px 20px 22px; }
+  .post-category {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent-dark);
+    margin-bottom: 8px;
+  }
+  .post-body h2 {
+    font-size: 1.1rem;
+    margin: 0 0 8px;
+  }
+  .post-body p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>

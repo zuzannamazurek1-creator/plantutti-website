@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dateLabel = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'long' }).format(post.data.date);
+---
+
+<Layout title={`${post.data.title} — Plantutti`} description={post.data.excerpt}>
+  <article class="container post">
+    <p class="post-meta">{post.data.category} · {dateLabel} · {post.data.author}</p>
+    <h1>{post.data.title}</h1>
+    <div class="post-image" aria-hidden="true"></div>
+    <div class="post-content">
+      <Content />
+    </div>
+    <div class="post-tags">
+      {post.data.tags.map((tag: string) => <span class="tag">#{tag}</span>)}
+    </div>
+    <a href="/blog" class="back-link">← Wróć do bloga</a>
+  </article>
+</Layout>
+
+<style>
+  .post { padding: 48px 24px 80px; max-width: 760px; }
+  .post-meta {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 10px;
+  }
+  .post h1 { font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: 24px; }
+  .post-image {
+    aspect-ratio: 16 / 8;
+    background: var(--color-light-green);
+    border-radius: var(--radius-lg);
+    margin-bottom: 32px;
+  }
+  .post-content :global(h4) {
+    font-size: 1.1rem;
+    margin-top: 1.8em;
+  }
+  .post-content :global(p) {
+    color: var(--color-text);
+    line-height: 1.75;
+    margin: 0 0 1em;
+  }
+  .post-content :global(a) { color: var(--color-accent-dark); text-decoration: underline; }
+  .post-content :global(li) { margin-bottom: 6px; line-height: 1.6; }
+  .post-tags { display: flex; gap: 10px; flex-wrap: wrap; margin: 32px 0 24px; }
+  .tag {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg-alt);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  .back-link {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .back-link:hover { color: var(--color-accent); }
+</style>

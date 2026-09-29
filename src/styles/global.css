@@ -1,0 +1,104 @@
+/*
+  FINALNY KIERUNEK (wariant C), po poprawkach klientki z wrzesnia 2026:
+  - znaczek P jest teraz wektorem wytraconym bezposrednio z ksiegi znaku (dokladny),
+  - Andika zostaje TYLKO w logotypie/wordmarku "Plantutti" (tak jak w ksiedze znaku,
+    str. 2.2 -- to jest dopuszczalny zamiennik Di Grotesk stworzony do logotypu),
+    a naglowki i tekst dostaly bardziej klasyczny font: Lora (naglowki, serif) +
+    PT Sans (tekst) -- latwo zmienic, to tylko dwie zmienne ponizej,
+  - wzor listkowy przerobiony na czysty wektor (bez czarnego konturu, tylko jasna
+    ziel) i przeniesiony z pola kodu (gdzie zaslanial tekst) do delikatnego tla
+    sekcji "Kody rabatowe" -- patrz .hero-pattern w index.astro.
+  Kolory nadal z ksiegi znaku: ciemna ziel #283c2d, jasna ziel #bed2a0,
+  kremowe tlo #f0f0e6, niebieski CTA #0aa0b4, ceglany #aa7d73, bezowy #d8c6b9.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Andika:wght@700&family=Lora:wght@500;600;700&family=PT+Sans:wght@400;700&display=swap');
+
+:root {
+  --color-dark-green: #283c2d;
+  --color-light-green: #bed2a0;
+  --color-cream: #f0f0e6;
+  --color-blue: #0aa0b4;
+  --color-brick: #aa7d73;
+  --color-beige: #d8c6b9;
+
+  --color-bg: var(--color-cream);
+  --color-surface: #ffffff;
+  --color-bg-alt: var(--color-light-green);
+  --color-primary: var(--color-dark-green);
+  --color-primary-light: #3a5540;
+  --color-accent: var(--color-blue);
+  --color-accent-dark: #077586;
+  --color-text: var(--color-dark-green);
+  --color-text-muted: #6b7b70;
+  --color-white: #ffffff;
+  --color-border: #e2ddc9;
+
+  --font-heading: 'Lora', serif;
+  --font-body: 'PT Sans', sans-serif;
+  --font-logo: 'Andika', sans-serif;
+
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --shadow-card: 0 1px 2px rgba(40, 60, 45, 0.05), 0 8px 24px rgba(40, 60, 45, 0.08);
+  --shadow-card-hover: 0 12px 32px rgba(40, 60, 45, 0.16);
+
+  --container-width: 1200px;
+
+  --pattern-leaf: url('/images/pattern/leaf-pattern.svg');
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 0.5em;
+}
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+.leaf-pattern-bg {
+  background-image: var(--pattern-leaf);
+  background-repeat: repeat;
+  background-size: 46px 46px;
+  opacity: 0.35;
+}

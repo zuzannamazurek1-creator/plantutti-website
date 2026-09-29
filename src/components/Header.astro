@@ -1,0 +1,116 @@
+---
+import LogoWordmark from './LogoWordmark.astro';
+const navLinks = [
+  { href: "/", label: "Kody rabatowe" },
+  { href: "/blog", label: "Blog" },
+  { href: "/o-nas", label: "O nas" },
+  { href: "/kontakt", label: "Kontakt" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Plantutti — strona główna">
+      <LogoWordmark height={28} color="var(--color-primary)" />
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Otwórz menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={["nav-link", { active: currentPath === link.href }]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav?.classList.toggle('open');
+  });
+</script>
+
+<style>
+  .site-header {
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+  .site-nav {
+    display: flex;
+    gap: 32px;
+  }
+  .nav-link {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-text);
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+  }
+  .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--color-text);
+    display: block;
+  }
+
+  @media (max-width: 720px) {
+    .nav-toggle { display: flex; }
+    .site-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--color-white);
+      flex-direction: column;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--color-border);
+      transition: max-height 0.25s ease;
+    }
+    .site-nav.open { max-height: 300px; }
+    .nav-link { padding: 14px 24px; border-bottom: 1px solid var(--color-border); }
+  }
+</style>

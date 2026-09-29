@@ -1,0 +1,35 @@
+---
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
+---
+<Layout title={`${frontmatter.title} — Plantutti`} description={frontmatter.title}>
+  <article class="legal container">
+    <h1>{frontmatter.title}</h1>
+    <div class="legal-body">
+      <slot />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .legal {
+    padding: 56px 24px 80px;
+    max-width: 820px;
+  }
+  .legal h1 {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin-bottom: 1.2em;
+  }
+  .legal-body :global(h2) {
+    font-size: 1.15rem;
+    margin-top: 2em;
+  }
+  .legal-body :global(p) {
+    color: var(--color-text);
+    line-height: 1.75;
+    margin: 0 0 1em;
+  }
+  .legal-body :global(strong) {
+    color: var(--color-primary);
+  }
+</style>

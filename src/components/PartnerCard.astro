@@ -1,0 +1,254 @@
+---
+// REDESIGN: nowoczesna karta produktowa -- zdjecie/karuzela na gorze na pelna szerokosc,
+// plywajaca plakietka rabatu (koralowa), logo jako maly "avatar" nachodzacy na zdjecie,
+// czytelna hierarchia tresci ponizej, jeden wyrazisty CTA.
+
+export interface Partner {
+  slug: string;
+  name: string;
+  discount_percent: number;
+  logo: string;
+  photos: string[];
+  description: string;
+  code: string;
+  conditions: string;
+  url: string;
+  button_label: string;
+  is_special_instagram_card?: boolean;
+  verified_date: string | null;
+  category?: string | null;
+}
+
+interface Props {
+  partner: Partner;
+}
+
+const { partner } = Astro.props;
+---
+
+<article
+  class="partner-card"
+  data-partner-slug={partner.slug}
+  data-partner-name={partner.name}
+  data-discount={partner.discount_percent}
+  data-verified={partner.verified_date ?? ''}
+  data-category={partner.category ?? ''}
+>
+  <div class="media">
+    <div class="discount-badge">-{partner.discount_percent}%</div>
+
+    <div class="carousel-track">
+      {partner.photos.map((photo, i) => (
+        <img
+          src={`/${photo}`}
+          alt={`Produkt ${partner.name} ${i + 1}`}
+          loading="lazy"
+          class="carousel-photo"
+          data-index={i}
+          hidden={i !== 0}
+        />
+      ))}
+    </div>
+
+    {partner.photos.length > 1 && (
+      <>
+        <button type="button" class="carousel-arrow carousel-prev" aria-label={`Poprzednie zdjęcie ${partner.name}`}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12,3 C7,3 3,7.03 3,12 C3,16.97 7.03,21 12,21 C13.66,21 15.14,20.44 16.34,19.5 C11.77,19.36 8.09,15.64 8,11.05 C10.91,14.89 15.34,17.2 20.2,17.64 C20.71,16 21,14.06 21,12 C21,7.03 17,3 12,3 Z" fill="#283c2d"/></svg>
+        </button>
+        <button type="button" class="carousel-arrow carousel-next" aria-label={`Następne zdjęcie ${partner.name}`}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12,3 C7,3 3,7.03 3,12 C3,16.97 7.03,21 12,21 C13.66,21 15.14,20.44 16.34,19.5 C11.77,19.36 8.09,15.64 8,11.05 C10.91,14.89 15.34,17.2 20.2,17.64 C20.71,16 21,14.06 21,12 C21,7.03 17,3 12,3 Z" fill="#283c2d"/></svg>
+        </button>
+      </>
+    )}
+
+    <div class="logo-avatar">
+      <img src={`/${partner.logo}`} alt={`Logo ${partner.name}`} loading="lazy" />
+    </div>
+  </div>
+
+  <div class="body">
+    <p class="name">{partner.name}</p>
+    <p class="description">{partner.description}</p>
+
+    <div class="code-box">
+      <div class="code-box-text">
+        <span class="code-label">Kod</span>
+        <span class="code-value">{partner.code}</span>
+      </div>
+      <span class="conditions">{partner.conditions}</span>
+    </div>
+
+    <div class="card-actions">
+      <button
+        type="button"
+        class="btn-copy"
+        data-code={partner.code}
+        data-url={partner.url}
+        data-partner={partner.name}
+      >
+        {partner.button_label}
+      </button>
+      <span class="copy-confirm" role="status" aria-live="polite" hidden>Skopiowano!</span>
+    </div>
+  </div>
+</article>
+
+<style>
+  .partner-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .partner-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-3px);
+  }
+
+  .media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: var(--color-light-green);
+  }
+  .carousel-track { position: relative; width: 100%; height: 100%; }
+  .carousel-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    z-index: 3;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    z-index: 3;
+    transition: background 0.15s ease;
+  }
+  .carousel-arrow:hover { background: rgba(255,255,255,1); }
+  .carousel-prev { left: 10px; }
+  .carousel-prev svg { transform: scaleX(-1); }
+  .carousel-next { right: 10px; }
+
+  .logo-avatar {
+    position: absolute;
+    bottom: -22px;
+    left: 16px;
+    width: 56px;
+    height: 56px;
+    background: var(--color-white);
+    border-radius: 50%;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    z-index: 4;
+  }
+  .logo-avatar img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+  .body {
+    padding: 34px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 0;
+    color: var(--color-primary);
+  }
+
+  .description {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    min-height: 2.6em;
+  }
+
+  .code-box {
+    background-color: var(--color-cream);
+    background-size: 46px 42px;
+    border-radius: var(--radius-md);
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .code-box-text { display: flex; align-items: baseline; gap: 8px; }
+  .code-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+  .code-value {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+  }
+  .conditions { font-size: 0.72rem; color: var(--color-text-muted); }
+
+  .card-actions { position: relative; margin-top: 4px; }
+  .btn-copy {
+    width: 100%;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 13px 16px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: background 0.15s ease;
+  }
+  .btn-copy:hover { background: var(--color-accent-dark); }
+  .btn-copy.copied { background: var(--color-accent-dark); }
+
+  .copy-confirm {
+    position: absolute;
+    top: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+</style>

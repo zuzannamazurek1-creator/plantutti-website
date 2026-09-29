@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LeafMark from '../components/LeafMark.astro';
+import partnersData from '../data/partners.json';
+
+const partners = partnersData as any[];
+
+const team = [
+  {
+    name: 'Zuzanna Mazurek',
+    role: 'Co-founder & Co-CEO',
+    bio: 'Ekspertka w dziedzinie zrównoważonego rozwoju i zarządzania produktem cyfrowym. Od niedawna też mama Benka. Zuzia jest bardziej „LinkedIn type of person”. W Plantutti odpowiada za naszą stronę i strategię długoterminową.',
+    links: [
+      { label: 'Instagram', url: 'https://www.instagram.com/zuzannamazurek_official/?hl=en' },
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/zuzannamazurek/' },
+    ],
+  },
+  {
+    name: 'Justyna Żak',
+    role: 'Co-founder & Co-CEO',
+    bio: 'Twórczyni internetowa promująca weganizm od ponad 8 lat. Wierna swoim zasadom jak nikt inny. W Plantutti odpowiada za współpracę z Partnerami i tworzenie treści na stronę i Instagram!',
+    links: [
+      { label: 'YouTube', url: 'https://www.youtube.com/user/Juszes' },
+      { label: 'Instagram', url: 'https://www.instagram.com/juszes/?hl=pl' },
+      { label: 'TikTok', url: 'https://tiktok.com/@juszesek' },
+    ],
+  },
+];
+
+const values = [
+  { title: 'Wierzymy w roślinny świat', text: 'W Plantutti promujemy roślinny styl życia, wierząc w jego pozytywny wpływ na zdrowie ludzi oraz środowisko naturalne.' },
+  { title: 'Walczymy o niższe ceny', text: 'Uważamy, że roślinne produkty mogą być dostępne dla każdego, bez względu na zasoby finansowe.' },
+  { title: 'Wspieramy przywództwo kobiet', text: 'Plantutti to firma założona przez dwie kobiety i naszym celem jest inspirowanie innych kobiet do spełniania swoich biznesowych marzeń.' },
+  { title: 'Działamy na rzecz lepszego jutra', text: 'Jesteśmy zaangażowane w promowanie zrównoważonych rozwiązań poprzez edukację i różne formy aktywizmu.' },
+];
+---
+
+<Layout
+  title="O nas — Plantutti"
+  description="Poznaj historię Plantutti — serwisu promującego roślinne alternatywy, oszczędzanie i dostęp do promocji dla każdego."
+>
+  <section class="container hero-onas">
+    <h1>O nas</h1>
+  </section>
+
+  <section class="container story">
+    <h2>Nasza historia</h2>
+    <p>Niby spotkałyśmy się na ploteczki przy kawie, ale temat rozmowy przejęła inflacja w Polsce. Zaczęłyśmy porównywać, w którym supermarkecie można najtaniej kupić napój roślinny i tofu. Okazało się, że w gazetkach promocyjnych i aplikacjach supermarketów najczęściej objęte rabatami są przetwory mięsne i sery. Zrodziło to pytanie — czy takie są preferencje klientów? A co z ludźmi, którzy wykluczają mięso z diety dla dobra zwierząt i planety? Czy roślinożercy są skazani na brak promocji?</p>
+    <p>Dziś razem tworzymy miejsce, gdzie znajdziecie trzy rodzaje promocji: na sklepowych półkach, w sklepach internetowych i stałe rabaty od naszych partnerów.</p>
+    <p>Plantutti to serwis promujący roślinne alternatywy, troskę o planetę oraz… oszczędzanie. Uważamy, że osoby z takimi wartościami powinny mieć równy dostęp do promocji, tak jak ci, którzy żyją „normalnie”. Postanowiłyśmy zmienić świat na lepsze, dając Wam dostęp do roślinnych promocji. A jeśli nie jesteś weganinem, również spoko — zapraszamy!</p>
+  </section>
+
+  <section class="container team">
+    <h2>Zespół Plantutti</h2>
+    <div class="team-grid">
+      {team.map((person) => (
+        <div class="person-card">
+          <div class="person-photo" aria-hidden="true"></div>
+          <p class="person-name">{person.name}</p>
+          <p class="person-role">{person.role}</p>
+          <p class="person-bio">{person.bio}</p>
+          <div class="person-links">
+            {person.links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener">{link.label}</a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container values">
+    <h2>Nasze wartości</h2>
+    <p class="lead">Te wartości stanowią fundament naszej firmy i napędzają nas do dostarczania wyjątkowych promocji, wspierając jednocześnie globalny ruch na rzecz weganizmu.</p>
+    <div class="values-grid">
+      {values.map((v, i) => (
+        <div class="value-card">
+          <span class="value-number">{i + 1}</span>
+          <p class="value-title">{v.title}</p>
+          <p class="value-text">{v.text}</p>
+        </div>
+      ))}
+    </div>
+    <p class="quote"><LeafMark size={20} color="var(--color-accent)" /> Nie godzimy się z dyskryminacją roślinożerców w gazetkach promocyjnych!</p>
+  </section>
+
+  <section class="container trusted">
+    <h2>Zaufali nam</h2>
+    <p class="lead">Korzystanie z Plantutti jest darmowe i chcemy, aby takie pozostało. Portal utrzymuje się dzięki współpracy z partnerami, którzy udostępnili dla nas kody afiliacyjne.</p>
+    <div class="logos-grid">
+      {partners.map((p) => (
+        <img src={`/${p.logo}`} alt={`Logo ${p.name}`} loading="lazy" />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-onas { padding: 64px 24px 24px; text-align: center; }
+  .story, .team, .values, .trusted { padding: 32px 24px; max-width: 820px; }
+  .story p { line-height: 1.75; margin-bottom: 1em; }
+  h2 { text-align: center; margin-bottom: 24px; }
+  .lead { text-align: center; color: var(--color-text-muted); margin-bottom: 32px; }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+  }
+  .person-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+  }
+  .person-photo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--color-light-green);
+    margin: 0 auto 16px;
+  }
+  .person-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; margin: 0; color: var(--color-primary); }
+  .person-role { font-size: 0.85rem; color: var(--color-text-muted); margin: 2px 0 12px; }
+  .person-bio { font-size: 0.88rem; line-height: 1.6; margin: 0 0 14px; }
+  .person-links { display: flex; gap: 12px; justify-content: center; }
+  .person-links a { font-size: 0.82rem; font-weight: 700; color: var(--color-accent-dark); text-decoration: none; }
+  .person-links a:hover { text-decoration: underline; }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .value-card { text-align: center; }
+  .value-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .value-title { font-weight: 700; color: var(--color-primary); margin: 0 0 6px; }
+  .value-text { font-size: 0.88rem; color: var(--color-text-muted); margin: 0; }
+  .quote {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 24px;
+    align-items: center;
+  }
+  .logos-grid img { max-height: 48px; width: auto; margin: 0 auto; object-fit: contain; }
+</style>

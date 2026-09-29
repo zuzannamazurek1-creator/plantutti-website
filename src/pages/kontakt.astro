@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Kontakt — Plantutti"
+  description="Masz pytanie, chcesz zostać partnerem albo zgłosić błąd? Napisz do nas."
+>
+  <section class="container kontakt">
+    <h1>Skontaktuj się z nami</h1>
+
+    <form id="contact-form" class="contact-form">
+      <label>
+        Imię
+        <input type="text" name="imie" required />
+      </label>
+      <label>
+        E-mail
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Wiadomość
+        <textarea name="wiadomosc" rows="5" required></textarea>
+      </label>
+      <label class="checkbox-row">
+        <input type="checkbox" name="zgoda" required />
+        <span>Zgadzam się z warunkami <a href="/polityka-prywatnosci">Polityki Prywatności</a></span>
+      </label>
+      <input type="hidden" name="access_key" value="" />
+      <button type="submit">Wyślij wiadomość</button>
+      <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</Layout>
+
+<style>
+  .kontakt { padding: 56px 24px 80px; max-width: 560px; }
+  .kontakt h1 { text-align: center; margin-bottom: 32px; }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: 32px;
+    box-shadow: var(--shadow-card);
+  }
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form textarea {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+  }
+  .checkbox-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .checkbox-row a { color: var(--color-accent-dark); }
+  .contact-form button {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 13px;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .contact-form button:hover { background: var(--color-accent-dark); }
+  .contact-status { margin: 0; font-size: 0.88rem; color: var(--color-text-muted); }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('contact-status');
+  const accessKeyInput = form?.querySelector('input[name="access_key"]') as HTMLInputElement | null;
+  if (accessKeyInput) {
+    accessKeyInput.value = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (status) status.textContent = 'Wysyłanie…';
+    const formData = new FormData(form);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        if (status) status.textContent = 'Dziękujemy za wiadomość! – Team Plantutti';
+        form.reset();
+      } else {
+        if (status) status.textContent = 'Oops! Coś poszło nie tak, spróbuj jeszcze raz.';
+      }
+    } catch {
+      if (status) status.textContent = 'Oops! Coś poszło nie tak, spróbuj jeszcze raz.';
+    }
+  });
+</script>

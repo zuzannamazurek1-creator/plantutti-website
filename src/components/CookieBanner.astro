@@ -1,0 +1,202 @@
+---
+// Baner cookies PL, ze zgodami: niezbędne / marketing / personalizacja / analityka.
+// Logika (zapis wyboru, blokowanie skryptów do czasu zgody) jest w <script> poniżej.
+// UWAGA: gdy podłączysz Umami/Plausible (Etap 4), ich <script> ładuj WARUNKOWO
+// dopiero po zapisaniu zgody na kategorię "Analityka" — patrz komentarz w skrypcie.
+---
+
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    <p class="cookie-title">Wegańskie ciasteczka?</p>
+    <p class="cookie-text">
+      Klikając „Akceptuj wszystkie pliki cookie”, zgadzasz się na przechowywanie plików
+      cookie na swoim urządzeniu w celu usprawnienia nawigacji po stronie, analizy
+      wykorzystania strony i wsparcia naszych działań marketingowych. Zapoznaj się z
+      naszą <a href="/polityka-prywatnosci">Polityką Prywatności</a>, aby uzyskać więcej informacji.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="btn-text" id="cookie-prefs">Preferencje</button>
+      <button type="button" class="btn-outline" id="cookie-reject">Odrzuć</button>
+      <button type="button" class="btn-primary" id="cookie-accept">Akceptuj</button>
+    </div>
+  </div>
+</div>
+
+<div id="cookie-prefs-modal" class="cookie-modal" hidden>
+  <div class="cookie-modal-inner">
+    <h2>Centrum Preferencji Prywatności</h2>
+    <p>
+      Podczas odwiedzania stron internetowych mogą one przechowywać lub pobierać dane w
+      Twojej przeglądarce. To przechowywanie jest często konieczne dla podstawowego
+      funkcjonowania witryny. Przechowywanie danych może być wykorzystywane do celów
+      marketingowych, analitycznych oraz personalizacji strony, na przykład do
+      przechowywania Twoich preferencji. Prywatność jest dla nas ważna, dlatego masz
+      możliwość wyłączenia niektórych typów przechowywania, które mogą nie być niezbędne
+      do podstawowego funkcjonowania witryny. Blokowanie kategorii może wpłynąć na Twoje
+      doświadczenia związane z korzystaniem ze strony.
+    </p>
+
+    <h3>Zarządzaj preferencjami zgody według kategorii</h3>
+
+    <div class="consent-row">
+      <label class="consent-label">
+        <span>Niezbędne</span>
+        <input type="checkbox" checked disabled />
+      </label>
+      <p class="consent-desc">Zawsze aktywne. Te elementy są wymagane do umożliwienia podstawowego funkcjonowania strony internetowej.</p>
+    </div>
+
+    <div class="consent-row">
+      <label class="consent-label">
+        <span>Marketing</span>
+        <input type="checkbox" id="consent-marketing" />
+      </label>
+      <p class="consent-desc">Te elementy są wykorzystywane do dostarczania reklam bardziej dopasowanych do Twoich zainteresowań oraz mierzenia skuteczności kampanii reklamowych.</p>
+    </div>
+
+    <div class="consent-row">
+      <label class="consent-label">
+        <span>Personalizacja</span>
+        <input type="checkbox" id="consent-personalization" />
+      </label>
+      <p class="consent-desc">Te elementy pozwalają witrynie zapamiętać Twoje wybory (np. język, region) i zapewnić bardziej spersonalizowane funkcje.</p>
+    </div>
+
+    <div class="consent-row">
+      <label class="consent-label">
+        <span>Analityka</span>
+        <input type="checkbox" id="consent-analytics" />
+      </label>
+      <p class="consent-desc">Te elementy pomagają nam zrozumieć, jak działa strona i jak odwiedzający wchodzą z nią w interakcje.</p>
+    </div>
+
+    <div class="cookie-actions">
+      <button type="button" class="btn-primary" id="cookie-save-prefs">Potwierdź i zamknij</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+    padding: 20px 24px;
+    z-index: 200;
+  }
+  .cookie-banner-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+  }
+  .cookie-title { font-family: var(--font-heading); font-weight: 700; margin: 0; }
+  .cookie-text { margin: 0; font-size: 0.9rem; color: var(--color-text-muted); }
+  .cookie-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+
+  .btn-primary, .btn-outline, .btn-text {
+    border-radius: var(--radius-sm);
+    padding: 10px 20px;
+    font-weight: 700;
+    border: 2px solid var(--color-primary);
+  }
+  .btn-primary { background: var(--color-primary); color: var(--color-white); }
+  .btn-outline { background: transparent; color: var(--color-primary); }
+  .btn-text { background: none; border-color: transparent; color: var(--color-text-muted); }
+
+  .cookie-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 300;
+    padding: 20px;
+  }
+  .cookie-modal[hidden] {
+    display: none;
+  }
+  .cookie-modal-inner {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 560px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .consent-row { border-top: 1px solid var(--color-border); padding: 12px 0; }
+  .consent-label { display: flex; justify-content: space-between; font-weight: 700; }
+  .consent-desc { color: var(--color-text-muted); font-size: 0.85rem; margin: 4px 0 0; }
+</style>
+
+<script>
+  const CONSENT_KEY = 'plantutti-cookie-consent';
+
+  type Consent = {
+    necessary: true;
+    marketing: boolean;
+    personalization: boolean;
+    analytics: boolean;
+  };
+
+  function readConsent(): Consent | null {
+    try {
+      const raw = localStorage.getItem(CONSENT_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function writeConsent(consent: Consent) {
+    try {
+      localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+    } catch {
+      // Prywatna karta / zablokowany localStorage -- nie blokujemy UI z tego powodu,
+      // zgoda po prostu nie przetrwa odswiezenia strony w tej sesji.
+    }
+    try {
+      document.dispatchEvent(new CustomEvent('plantutti:consent', { detail: consent }));
+    } catch {
+      // no-op
+    }
+    // TODO Etap 4: tutaj (na 'plantutti:consent') warunkowo doładuj skrypt Umami/Plausible,
+    // jesli consent.analytics === true. Domyslnie NIC nie ladujemy bez zgody.
+  }
+
+  const banner = document.getElementById('cookie-banner');
+  const modal = document.getElementById('cookie-prefs-modal');
+
+  const existing = readConsent();
+  if (!existing && banner) {
+    banner.hidden = false;
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    writeConsent({ necessary: true, marketing: true, personalization: true, analytics: true });
+    if (banner) banner.hidden = true;
+  });
+
+  document.getElementById('cookie-reject')?.addEventListener('click', () => {
+    writeConsent({ necessary: true, marketing: false, personalization: false, analytics: false });
+    if (banner) banner.hidden = true;
+  });
+
+  document.getElementById('cookie-prefs')?.addEventListener('click', () => {
+    if (modal) modal.hidden = false;
+  });
+
+  document.getElementById('cookie-save-prefs')?.addEventListener('click', () => {
+    const marketing = (document.getElementById('consent-marketing') as HTMLInputElement)?.checked ?? false;
+    const personalization = (document.getElementById('consent-personalization') as HTMLInputElement)?.checked ?? false;
+    const analytics = (document.getElementById('consent-analytics') as HTMLInputElement)?.checked ?? false;
+    writeConsent({ necessary: true, marketing, personalization, analytics });
+    if (modal) modal.hidden = true;
+    if (banner) banner.hidden = true;
+  });
+</script>
