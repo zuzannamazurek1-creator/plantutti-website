@@ -23,20 +23,56 @@ collections:
     label_singular: "Partner"
     identifier_field: "slug"
     fields:
-      - { name: partners, label: "Partnerzy", widget: list, label_singular: "Partner", summary: "{{name}} — {{discount_percent}}%", fields:
-          - { name: slug, label: "Slug (unikalny, bez spacji, np. moj-partner)", widget: string }
-          - { name: name, label: "Nazwa partnera", widget: string }
-          - { name: discount_percent, label: "Rabat w %", widget: number, value_type: int }
-          - { name: logo, label: "Logo (sciezka wzgledna, np. images/partners/nazwa/logo.png)", widget: string }
-          - { name: photos, label: "Zdjecia produktow (karuzela)", widget: list, field: { name: photo, label: "Zdjecie (sciezka)", widget: string } }
-          - { name: description, label: "Opis partnera", widget: text }
-          - { name: code, label: "Kod rabatowy", widget: string }
-          - { name: conditions, label: "Warunki rabatu", widget: string, required: false }
-          - { name: url, label: "Link do sklepu partnera", widget: string }
-          - { name: button_label, label: "Tekst na przycisku", widget: string, default: "Kopiuj i przejdź do sklepu" }
-          - { name: verified_date, label: "Data ostatniej weryfikacji kodu", widget: date }
-          - { name: category, label: "Kategoria", widget: select, options: ["Akcesoria", "Kosmetyki", "Moda", "Spożywcze", "Usługi"] }
-        }
+      - name: "partners"
+        label: "Partnerzy"
+        widget: "list"
+        label_singular: "Partner"
+        summary: "{{name}} — {{discount_percent}}%"
+        fields:
+          - name: "slug"
+            label: "Slug (unikalny, bez spacji, np. moj-partner)"
+            widget: "string"
+          - name: "name"
+            label: "Nazwa partnera"
+            widget: "string"
+          - name: "discount_percent"
+            label: "Rabat w %"
+            widget: "number"
+            value_type: "int"
+          - name: "logo"
+            label: "Logo (ścieżka względna, np. images/partners/nazwa/logo.png)"
+            widget: "string"
+          - name: "photos"
+            label: "Zdjęcia produktów (karuzela)"
+            widget: "list"
+            field:
+              name: "photo"
+              label: "Zdjęcie (ścieżka)"
+              widget: "string"
+          - name: "description"
+            label: "Opis partnera"
+            widget: "text"
+          - name: "code"
+            label: "Kod rabatowy"
+            widget: "string"
+          - name: "conditions"
+            label: "Warunki rabatu"
+            widget: "string"
+            required: false
+          - name: "url"
+            label: "Link do sklepu partnera"
+            widget: "string"
+          - name: "button_label"
+            label: "Tekst na przycisku"
+            widget: "string"
+            default: "Kopiuj i przejdź do sklepu"
+          - name: "verified_date"
+            label: "Data ostatniej weryfikacji kodu"
+            widget: "date"
+          - name: "category"
+            label: "Kategoria"
+            widget: "select"
+            options: ["Akcesoria", "Kosmetyki", "Moda", "Spożywcze", "Usługi"]
 
   # --- Blog ---
   - name: "blog"
@@ -46,11 +82,33 @@ collections:
     slug: "{{slug}}"
     identifier_field: "title"
     fields:
-      - { name: title, label: "Tytuł", widget: string }
-      - { name: category, label: "Kategoria", widget: string }
-      - { name: author, label: "Autor", widget: string, default: "Team Plantutti" }
-      - { name: date, label: "Data publikacji", widget: datetime }
-      - { name: tags, label: "Tagi", widget: list, field: { name: tag, label: "Tag", widget: string } }
-      - { name: featured_image, label: "Zdjęcie wyróżniające (ścieżka)", widget: string, required: false }
-      - { name: excerpt, label: "Krótki opis (widoczny na liście)", widget: text }
-      - { name: body, label: "Treść wpisu", widget: markdown }
+      - name: "title"
+        label: "Tytuł"
+        widget: "string"
+      - name: "category"
+        label: "Kategoria"
+        widget: "string"
+      - name: "author"
+        label: "Autor"
+        widget: "string"
+        default: "Team Plantutti"
+      - name: "date"
+        label: "Data publikacji"
+        widget: "datetime"
+      - name: "tags"
+        label: "Tagi"
+        widget: "list"
+        field:
+          name: "tag"
+          label: "Tag"
+          widget: "string"
+      - name: "featured_image"
+        label: "Zdjęcie wyróżniające (ścieżka)"
+        widget: "string"
+        required: false
+      - name: "excerpt"
+        label: "Krótki opis (widoczny na liście)"
+        widget: "text"
+      - name: "body"
+        label: "Treść wpisu"
+        widget: "markdown"
