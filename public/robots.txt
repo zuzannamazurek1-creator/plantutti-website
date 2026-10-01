@@ -1,0 +1,13 @@
+# UWAGA: to jest wersja TESTOWA (plantutti-test.netlify.app).
+# Dopoki strona dziala rownolegle z plantutti.pl na Webflow, blokujemy
+# wyszukiwarki przed zaindeksowaniem tego adresu testowego -- zeby nie
+# powstala "podwojna" wersja strony w Google i nie namieszala w SEO.
+#
+# PRZED WLACZENIEM PRAWDZIWEJ DOMENY (plantutti.pl) NA TYM KODZIE:
+# usun linijke "Disallow: /" ponizej (zostaw tylko "Allow: /" i mapę strony),
+# zeby Google zaczal normalnie indeksowac strone pod wlasciwym adresem.
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.plantutti.pl/sitemap-index.xml
