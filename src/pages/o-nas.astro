@@ -9,6 +9,7 @@ const team = [
   {
     name: 'Zuzanna Mazurek',
     role: 'Co-founder & Co-CEO',
+    photo: 'zuzanna-mazurek.png',
     bio: 'Ekspertka w dziedzinie zrównoważonego rozwoju i zarządzania produktem cyfrowym. Od niedawna też mama Benka. Zuzia jest bardziej „LinkedIn type of person”. W Plantutti odpowiada za naszą stronę i strategię długoterminową.',
     links: [
       { label: 'Instagram', url: 'https://www.instagram.com/zuzannamazurek_official/?hl=en' },
@@ -18,6 +19,7 @@ const team = [
   {
     name: 'Justyna Żak',
     role: 'Co-founder & Co-CEO',
+    photo: 'justyna-zak.png',
     bio: 'Twórczyni internetowa promująca weganizm od ponad 8 lat. Wierna swoim zasadom jak nikt inny. W Plantutti odpowiada za współpracę z Partnerami i tworzenie treści na stronę i Instagram!',
     links: [
       { label: 'YouTube', url: 'https://www.youtube.com/user/Juszes' },
@@ -40,14 +42,23 @@ const values = [
   description="Poznaj historię Plantutti — serwisu promującego roślinne alternatywy, oszczędzanie i dostęp do promocji dla każdego."
 >
   <section class="container hero-onas">
-    <h1>O nas</h1>
+    <div class="hero-text">
+      <h1>O nas</h1>
+      <p class="hero-lead">Poznajcie dwie roślinożerczynie, które postanowiły udowodnić, że promocje też mogą być fair dla wegan.</p>
+    </div>
+    <img class="hero-image" src="/images/o-nas/hero.jpeg" alt="Zuzanna i Justyna, założycielki Plantutti" loading="eager" />
   </section>
 
   <section class="container story">
     <h2>Nasza historia</h2>
-    <p>Niby spotkałyśmy się na ploteczki przy kawie, ale temat rozmowy przejęła inflacja w Polsce. Zaczęłyśmy porównywać, w którym supermarkecie można najtaniej kupić napój roślinny i tofu. Okazało się, że w gazetkach promocyjnych i aplikacjach supermarketów najczęściej objęte rabatami są przetwory mięsne i sery. Zrodziło to pytanie — czy takie są preferencje klientów? A co z ludźmi, którzy wykluczają mięso z diety dla dobra zwierząt i planety? Czy roślinożercy są skazani na brak promocji?</p>
-    <p>Dziś razem tworzymy miejsce, gdzie znajdziecie trzy rodzaje promocji: na sklepowych półkach, w sklepach internetowych i stałe rabaty od naszych partnerów.</p>
-    <p>Plantutti to serwis promujący roślinne alternatywy, troskę o planetę oraz… oszczędzanie. Uważamy, że osoby z takimi wartościami powinny mieć równy dostęp do promocji, tak jak ci, którzy żyją „normalnie”. Postanowiłyśmy zmienić świat na lepsze, dając Wam dostęp do roślinnych promocji. A jeśli nie jesteś weganinem, również spoko — zapraszamy!</p>
+    <div class="story-grid">
+      <div class="story-text">
+        <p>Niby spotkałyśmy się na ploteczki przy kawie, ale temat rozmowy przejęła inflacja w Polsce. Zaczęłyśmy porównywać, w którym supermarkecie można najtaniej kupić napój roślinny i tofu. Okazało się, że w gazetkach promocyjnych i aplikacjach supermarketów najczęściej objęte rabatami są przetwory mięsne i sery. Zrodziło to pytanie — czy takie są preferencje klientów? A co z ludźmi, którzy wykluczają mięso z diety dla dobra zwierząt i planety? Czy roślinożercy są skazani na brak promocji?</p>
+        <p>Dziś razem tworzymy miejsce, gdzie znajdziecie trzy rodzaje promocji: na sklepowych półkach, w sklepach internetowych i stałe rabaty od naszych partnerów.</p>
+        <p>Plantutti to serwis promujący roślinne alternatywy, troskę o planetę oraz… oszczędzanie. Uważamy, że osoby z takimi wartościami powinny mieć równy dostęp do promocji, tak jak ci, którzy żyją „normalnie”. Postanowiłyśmy zmienić świat na lepsze, dając Wam dostęp do roślinnych promocji. A jeśli nie jesteś weganinem, również spoko — zapraszamy!</p>
+      </div>
+      <img class="story-image" src="/images/o-nas/historia-2.jpg" alt="Historia Plantutti" loading="lazy" />
+    </div>
   </section>
 
   <section class="container team">
@@ -55,7 +66,7 @@ const values = [
     <div class="team-grid">
       {team.map((person) => (
         <div class="person-card">
-          <div class="person-photo" aria-hidden="true"></div>
+          <img class="person-photo" src={`/images/team/${person.photo}`} alt={person.name} loading="lazy" />
           <p class="person-name">{person.name}</p>
           <p class="person-role">{person.role}</p>
           <p class="person-bio">{person.bio}</p>
@@ -96,11 +107,47 @@ const values = [
 </Layout>
 
 <style>
-  .hero-onas { padding: 64px 24px 24px; text-align: center; }
-  .story, .team, .values, .trusted { padding: 32px 24px; max-width: 820px; }
-  .story p { line-height: 1.75; margin-bottom: 1em; }
+  .hero-onas {
+    padding: 56px 24px 24px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1100px;
+  }
+  .hero-text h1 { margin-bottom: 14px; }
+  .hero-lead { font-size: 1.1rem; color: var(--color-text-muted); line-height: 1.6; }
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
+
+  .story, .team, .values, .trusted { padding: 32px 24px; max-width: 1020px; }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 36px;
+    align-items: center;
+  }
+  .story-text p { line-height: 1.75; margin-bottom: 1em; }
+  .story-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+  }
   h2 { text-align: center; margin-bottom: 24px; }
   .lead { text-align: center; color: var(--color-text-muted); margin-bottom: 32px; }
+
+  @media (max-width: 760px) {
+    .hero-onas { grid-template-columns: 1fr; text-align: center; }
+    .story-grid { grid-template-columns: 1fr; }
+    .story-image { order: -1; aspect-ratio: 16 / 9; }
+  }
 
   .team-grid {
     display: grid;
@@ -119,6 +166,8 @@ const values = [
     height: 96px;
     border-radius: 50%;
     background: var(--color-light-green);
+    object-fit: cover;
+    display: block;
     margin: 0 auto 16px;
   }
   .person-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; margin: 0; color: var(--color-primary); }
