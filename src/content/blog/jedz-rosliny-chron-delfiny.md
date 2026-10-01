@@ -5,7 +5,7 @@ category: ekologia
 author: Zuzanna Mazurek
 date: 2024-07-12
 tags: ["zmiana klimatu", "dieta roślinna", "ślad węglowy", ekologia]
-featured_image: "66d181871dff905e48631893_Delfiny poważnie odczują.png"
+featured_image: "images/blog/jedz-rosliny-chron-delfiny/featured.png"
 excerpt: "Nie jadasz delfinów, ale chcesz uchronić je przed śmiercią?"
 ---
 
@@ -13,6 +13,7 @@ excerpt: "Nie jadasz delfinów, ale chcesz uchronić je przed śmiercią?"
 
 Jeśli odpowiedź brzmi tak, to mamy dla Ciebie prawdziwy rarytas. Redakcja National Geographic spisała 41 interesujących faktów o delfinach (1), a jeden z nich przesądza o tym, że delfiny poważnie odczują wpływ kryzysu klimatycznego. Delfin to nie ryba, to ssak mieszkający w wodzie. Ryby są w większości zmiennocieplne i temperatura ich ciała zależy od temperatury wody, natomiast delfin reguluje temperaturę swojego ciała tak, aby utrzymać ją na stałym poziomie. Ponieważ delfiny żyją w wodzie, nie mogą pocić się ani dyszeć jak inne ssaki, gdy jest im za gorąco. Zamiast tego muszą kierować cieplejszą krew na obwód swojego ciała, czyli na brzuch, który czasem wydaje się różowy, aby schłodzić się w oceanie. Jednak gdy temperatury oceanów zaczynają się zbliżać do temperatury ciała delfinów (37°C), delfiny nie mogą już się schłodzić (2).
 
+![Delfin z różowym brzuszkiem](/images/blog/jedz-rosliny-chron-delfiny/delfin-info.png)
 *Delfin z różowym brzuszkiem :(*
 
 #### Jak pomóc delfinom?
@@ -33,7 +34,7 @@ Największe do tej pory opublikowane badanie śladu węglowego w całym łańcuc
 
 Co ciekawe, z tego badania wynika też, że jeśli chcemy ograniczyć ślad węglowy naszej diety, to ważniejsze jest skupienie się na tym, jakie produkty znajdą się na naszym talerzu niż to, czy będą lokalne. Okazuje się bowiem, że wpływ transportu na ślad węglowy nie jest tak wysoki, jak się powszechnie uważa.
 
-(wykres: emisje CO2e w kg na 1 kg produktu — obraz "668c2d46865f9ba8c30f6bf8_2.png")
+![Emisje CO2e w kg na 1 kg produktu](/images/blog/jedz-rosliny-chron-delfiny/wykres-slad-weglowy-kg.png)
 
 Dane na wykresie powyżej przedstawione są w przeliczeniu na 1 kg produktu i wyrażone są w tzw. ekwiwalencie CO2. Co to znaczy? Przy produkcji jedzenia powstają różne gazy o różnym wpływie na powstawanie efektu cieplarnianego, nie tylko dwutlenek węgla. Dla przykładu, metan jest 28 razy silniejszy niż dwutlenek węgla. W celu standaryzacji, naukowcy przeliczyli wpływ innych gazów i wyrazili go w ekwiwalencie CO2.
 
@@ -41,7 +42,7 @@ Dane na wykresie powyżej przedstawione są w przeliczeniu na 1 kg produktu i wy
 
 Jako osoby zajmujące się promowaniem ekologicznego stylu życia, przywykłyśmy do pojedynku na słowa. Przytaczając takie dane, jakby od razu szykujemy się na argumenty, że być może ślad węglowy kilograma jabłek jest niższy od kilograma wołowiny. Ale ten kilogram wołowiny to przecież więcej kalorii niż dostarczą nam jabłka. Przeliczmy zatem to tak, żeby pokazać ślad węglowy różnych diet w przeliczeniu na 1000 kalorii (4).
 
-(wykres: ślad węglowy diet na 1000 kalorii — obraz "668c2d5a12c40607291eebbb_1.png")
+![Ślad węglowy diet na 1000 kalorii](/images/blog/jedz-rosliny-chron-delfiny/wykres-slad-weglowy-1000kcal.png)
 
 A zatem... jedz rośliny, chroń delfiny! A to wszystko będzie teraz łatwiejsze, ponieważ Plantutti pomoże Ci w odnalezieniu roślinnych produktów, które pomogą obniżyć ślad węglowy Twojej diety w promocyjnych cenach.
 

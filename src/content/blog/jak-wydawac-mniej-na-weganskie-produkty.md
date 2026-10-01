@@ -5,7 +5,7 @@ category: jedzenie
 author: Zuzanna Mazurek
 date: 2024-09-11
 tags: [oszczędzanie, promocje, "kody rabatowe", okazje]
-featured_image: "66e17dde66c4d163fcbc7f22_Kopia – Delfiny poważnie odczują.png"
+featured_image: "images/blog/jak-wydawac-mniej/featured.png"
 excerpt: "Chcesz wydawać mniej na roślinne produkty? Przeczytaj więcej"
 ---
 

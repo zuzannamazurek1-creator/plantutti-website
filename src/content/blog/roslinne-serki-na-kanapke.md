@@ -5,7 +5,7 @@ category: jedzenie
 author: Zuzanna Mazurek
 date: null
 tags: ["serek topiony", "na kanapkę", "roślinne alternatywy", vegan]
-featured_image: "66d42018c7e362f128ab1052_Delfiny poważnie odczują (1).png"
+featured_image: "images/blog/roslinne-serki/featured.png"
 excerpt: "W tym zestawieniu znajdziesz wegańskie alternatywy dla różnego rodzaju twarożków i serków."
 ---
 
@@ -19,11 +19,15 @@ W tym zestawieniu znajdziesz wegańskie alternatywy dla różnego rodzaju twaro�
 
 #### 1. Smarowaniec kremowy klasyczny - Wege siostry
 
+![Smarowaniec kremowy klasyczny - Wege siostry](/images/blog/roslinne-serki/wege-siostry.png)
+
 Składniki: woda, olej kokosowy, orzechy nerkowca 14,8%, skrobia, białko bobu, białko grochu, sól, żywe kultury bakterii.
 
 *Recenzja Plantutti: Uwielbiamy za teksturę! Ten smarowaniec jest naprawdę aksamitny i do złudzenia przypomina takie tradycyjne kremowe twarożki na kanapkę, które pamiętamy z dzieciństwa. Ogromny plus za skład, ponieważ oprócz oleju kokosowego znajdziemy też orzechy nerkowca, biało bobu i żywe kultury bakterii!*
 
 #### 2. Serek kremowy - Violife
+
+![Serek kremowy - Violife](/images/blog/roslinne-serki/violife.png)
 
 Składniki: woda, olej kokosowy (23%), skrobia, sól morska, regulator kwasowości: lakton kwasu glukonowego, aromaty, ekstrakt z oliwek, witamina B12.
 
@@ -31,11 +35,15 @@ Składniki: woda, olej kokosowy (23%), skrobia, sól morska, regulator kwasowoś
 
 #### 3. Vegan topiony - Auchan
 
+![Vegan topiony - Auchan](/images/blog/roslinne-serki/auchan.png)
+
 Składniki: woda, tłuszcz kokosowy 22%, skrobia modyfikowana, sól, stabilizatory, pektyny, karagen: mieszanka aromatyzująca (glukoza, sól, aromat, ekstrakt drożdżowy), regulatory kwasowości: kwas mlekowy, mleczan wapnia, barwnik, karoteny.
 
 *Recenzja Plantutti: Nutri-score D i rzut okiem na skład pozwala szybko dojść do wniosku, że ten produkt nie zachwyca składem. Natomiast, doceniamy odtworzenie kultowego opakowania. Można sobie urządzić takie śniadanie z serkiem w trójkąciku, tylko warto wyjąć takie serki chwilę wcześniej z lodówki, ponieważ chłodne są dość twarde i trudno rozsmarować zgodnie z propozycją podania. Serki te można też z powodzeniem stosować w przepisach na zupy krem, w których zaleca się dodanie takiego tradycyjnego serka topionego.*
 
 #### 4. Vege Serek - Tartare
+
+![Vege Serek - Tartare](/images/blog/roslinne-serki/tartare.png)
 
 Składniki: baza migdałowa 65% (woda, puree z migdałów 16%), woda, olej rzepakowy, inulina, skrobia ziemniaczana, zioła prowansalskie, zioła, czosnek, skoncentrowany sok cytrynowy, sól, naturalne aromaty.
 
@@ -43,17 +51,23 @@ Składniki: baza migdałowa 65% (woda, puree z migdałów 16%), woda, olej rzepa
 
 #### 5. Kremowy naturalny - Simply V
 
+![Kremowy naturalny - Simply V](/images/blog/roslinne-serki/simply-v.png)
+
 Składniki: Produkt migdałowy (woda pitna, migdały (18%), olej kokosowy (13%), koncentrat soku cytrynowego, sól morska, substancja zagęszczająca: mączka chleba świętojańskiego; naturalny smak.
 
 *Recenzja Plantutti: Jeszcze nie dorwałyśmy do testowania, zaktualizujemy ten wpis po konsumpcji ;)*
 
 #### 6. Wegański serek kremowy naturalny - Filona
 
+![Wegański serek kremowy naturalny - Filona](/images/blog/roslinne-serki/filona.png)
+
 Składniki: woda, ekstrakt sojowy 32%, tłuszcz kokosowy, pasta migdałowa 12%, sól, stabilizator: mączka chleba świętojańskiego, kultury bakterii. (certyfikowany składnik ekologiczny)
 
 *Recenzja Plantutti: Jeszcze nie dorwałyśmy do testowania, zaktualizujemy ten wpis po konsumpcji ;)*
 
 #### 7. Kremowa pasta z tofu - Lunter
+
+![Kremowa pasta z tofu - Lunter](/images/blog/roslinne-serki/lunter.png)
 
 Składniki: napój sojowy Lunter (woda, nasiona soi), 23% tofu Lunter (woda, nasiona soi), olej rzepakowy, olej shea, skrobia kukurydziana, sól, sok cytrynowy z soku zagęszczonego, woda, stabilizator: pektyny, suszone drożdże.
 
