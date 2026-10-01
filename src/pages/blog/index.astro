@@ -18,7 +18,11 @@ const posts = (await getCollection('blog')).sort(
     <div class="post-grid">
       {posts.map((post) => (
         <a href={`/blog-posts/${post.id.replace(/\.md$/, '')}`} class="post-card">
-          <div class="post-image" aria-hidden="true"></div>
+          {post.data.featured_image ? (
+            <img class="post-image" src={`/${post.data.featured_image}`} alt="" loading="lazy" />
+          ) : (
+            <div class="post-image" aria-hidden="true"></div>
+          )}
           <div class="post-body">
             <span class="post-category">{post.data.category}</span>
             <h2>{post.data.title}</h2>
@@ -56,6 +60,8 @@ const posts = (await getCollection('blog')).sort(
   .post-image {
     aspect-ratio: 16 / 10;
     background: var(--color-light-green);
+    width: 100%;
+    object-fit: cover;
   }
   .post-body { padding: 18px 20px 22px; }
   .post-category {
