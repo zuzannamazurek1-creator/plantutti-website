@@ -19,7 +19,11 @@ const dateLabel = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'long' }).format
   <article class="container post">
     <p class="post-meta">{post.data.category} · {dateLabel} · {post.data.author}</p>
     <h1>{post.data.title}</h1>
-    <div class="post-image" aria-hidden="true"></div>
+    {post.data.featured_image ? (
+      <img class="post-image" src={`/${post.data.featured_image}`} alt="" />
+    ) : (
+      <div class="post-image" aria-hidden="true"></div>
+    )}
     <div class="post-content">
       <Content />
     </div>
@@ -46,6 +50,8 @@ const dateLabel = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'long' }).format
     background: var(--color-light-green);
     border-radius: var(--radius-lg);
     margin-bottom: 32px;
+    width: 100%;
+    object-fit: cover;
   }
   .post-content :global(h4) {
     font-size: 1.1rem;
@@ -58,6 +64,13 @@ const dateLabel = new Intl.DateTimeFormat('pl-PL', { dateStyle: 'long' }).format
   }
   .post-content :global(a) { color: var(--color-accent-dark); text-decoration: underline; }
   .post-content :global(li) { margin-bottom: 6px; line-height: 1.6; }
+  .post-content :global(img) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    margin: 1.2em 0;
+  }
   .post-tags { display: flex; gap: 10px; flex-wrap: wrap; margin: 32px 0 24px; }
   .tag {
     font-size: 0.78rem;
