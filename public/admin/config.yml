@@ -1,17 +1,17 @@
-# Konfiguracja panelu CMS (Sveltia/Decap) dla plantutti.pl
-# Backend: Git Gateway przez Netlify Identity -- logowanie odbywa sie mailem,
-# bez zakladania osobnej aplikacji OAuth. Wlaczasz to w dashboardzie Netlify:
-# Site settings -> Identity -> Enable Identity, oraz Site settings -> Identity -> Services -> Git Gateway -> Enable.
+# Konfiguracja panelu CMS (Sveltia CMS) dla plantutti.pl
+# Backend: GitHub bezposrednio (Git Gateway jest przestarzaly i Sveltia CMS go nie obsluguje).
+# Logowanie: na ekranie logowania klikasz "Sign In with Token" -> CMS da Ci link do
+# wygenerowania tokenu na GitHubie (z uprawnieniem do tego repo) -> wklejasz token -> gotowe.
+# Nie trzeba zakladac zadnej osobnej aplikacji OAuth.
 
 backend:
-  name: git-gateway
+  name: github
+  repo: zuzannamazurek1-creator/plantutti-website
   branch: main
 
 # Media (zdjecia partnerow, bloga itd.) trzymamy w public/images, tak jak teraz.
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
-
-locale: "pl"
 
 collections:
   # --- Partnerzy / kody rabatowe ---
@@ -19,15 +19,12 @@ collections:
     label: "Kody rabatowe (Partnerzy)"
     file: "src/data/partners.json"
     format: "json"
-    extension: "json"
-    label_singular: "Partner"
-    identifier_field: "slug"
     fields:
       - name: "partners"
         label: "Partnerzy"
         widget: "list"
         label_singular: "Partner"
-        summary: "{{name}} — {{discount_percent}}%"
+        summary: "{{fields.name}} — {{fields.discount_percent}}%"
         fields:
           - name: "slug"
             label: "Slug (unikalny, bez spacji, np. moj-partner)"
@@ -38,7 +35,6 @@ collections:
           - name: "discount_percent"
             label: "Rabat w %"
             widget: "number"
-            value_type: "int"
           - name: "logo"
             label: "Logo (ścieżka względna, np. images/partners/nazwa/logo.png)"
             widget: "string"
@@ -68,7 +64,8 @@ collections:
             default: "Kopiuj i przejdź do sklepu"
           - name: "verified_date"
             label: "Data ostatniej weryfikacji kodu"
-            widget: "date"
+            widget: "datetime"
+            type: "date"
           - name: "category"
             label: "Kategoria"
             widget: "select"
@@ -111,4 +108,4 @@ collections:
         widget: "text"
       - name: "body"
         label: "Treść wpisu"
-        widget: "markdown" 
+        widget: "markdown"
