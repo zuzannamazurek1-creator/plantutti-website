@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PartnerCard from '../components/PartnerCard.astro';
 import partnersData from '../data/partners.json';
 
-const partners = (partnersData as any[]).slice().sort((a, b) =>
+const partners = ((partnersData as any).partners as any[]).slice().sort((a, b) =>
   a.name.localeCompare(b.name, 'pl', { sensitivity: 'base' })
 );
 ---

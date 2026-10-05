@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import LeafMark from '../components/LeafMark.astro';
 import partnersData from '../data/partners.json';
 
-const partners = partnersData as any[];
+const partners = (partnersData as any).partners as any[];
 
 const team = [
   {
