@@ -1,21 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import LeafMark from '../components/LeafMark.astro';
+import SideLeaves from '../components/SideLeaves.astro';
 import partnersData from '../data/partners.json';
 
 const partners = (partnersData as any).partners as any[];
 
 const team = [
-  {
-    name: 'Zuzanna Mazurek',
-    role: 'Co-founder & Co-CEO',
-    photo: 'zuzanna-mazurek.png',
-    bio: 'Ekspertka w dziedzinie zrównoważonego rozwoju i zarządzania produktem cyfrowym. Od niedawna też mama Benka. Zuzia jest bardziej „LinkedIn type of person”. W Plantutti odpowiada za naszą stronę i strategię długoterminową.',
-    links: [
-      { label: 'Instagram', url: 'https://www.instagram.com/zuzannamazurek_official/?hl=en' },
-      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/zuzannamazurek/' },
-    ],
-  },
   {
     name: 'Justyna Żak',
     role: 'Co-founder & Co-CEO',
@@ -25,6 +15,16 @@ const team = [
       { label: 'YouTube', url: 'https://www.youtube.com/user/Juszes' },
       { label: 'Instagram', url: 'https://www.instagram.com/juszes/?hl=pl' },
       { label: 'TikTok', url: 'https://tiktok.com/@juszesek' },
+    ],
+  },
+  {
+    name: 'Zuzanna Mazurek',
+    role: 'Co-founder & Co-CEO',
+    photo: 'zuzanna-mazurek.png',
+    bio: 'Ekspertka w dziedzinie zrównoważonego rozwoju i zarządzania produktem cyfrowym. Od niedawna też mama Benka. Zuzia jest bardziej „LinkedIn type of person”. W Plantutti odpowiada za naszą stronę i strategię długoterminową.',
+    links: [
+      { label: 'LinkedIn', url: 'https://www.linkedin.com/in/zuzannamazurek/' },
+      { label: 'Instagram', url: 'https://www.instagram.com/zuzannamazurek_official/?hl=en' },
     ],
   },
 ];
@@ -41,180 +41,227 @@ const values = [
   title="O nas — Plantutti"
   description="Poznaj historię Plantutti — serwisu promującego roślinne alternatywy, oszczędzanie i dostęp do promocji dla każdego."
 >
-  <section class="container hero-onas">
-    <div class="hero-text">
-      <h1>O nas</h1>
-      <p class="hero-lead">Poznajcie dwie roślinożerczynie, które postanowiły udowodnić, że promocje też mogą być fair dla wegan.</p>
-    </div>
-    <img class="hero-image" src="/images/o-nas/hero.jpeg" alt="Zuzanna i Justyna, założycielki Plantutti" loading="eager" />
-  </section>
+  <!-- ===== O nas + Nasza historia (białe tło, dekoracje po bokach) ===== -->
+  <section class="band band-white">
+    <div class="container narrow">
+      <h1 class="page-title">O nas</h1>
 
-  <section class="container story">
-    <h2>Nasza historia</h2>
-    <div class="story-grid">
-      <div class="story-text">
-        <p>Niby spotkałyśmy się na ploteczki przy kawie, ale temat rozmowy przejęła inflacja w Polsce. Zaczęłyśmy porównywać, w którym supermarkecie można najtaniej kupić napój roślinny i tofu. Okazało się, że w gazetkach promocyjnych i aplikacjach supermarketów najczęściej objęte rabatami są przetwory mięsne i sery. Zrodziło to pytanie — czy takie są preferencje klientów? A co z ludźmi, którzy wykluczają mięso z diety dla dobra zwierząt i planety? Czy roślinożercy są skazani na brak promocji?</p>
-        <p>Dziś razem tworzymy miejsce, gdzie znajdziecie trzy rodzaje promocji: na sklepowych półkach, w sklepach internetowych i stałe rabaty od naszych partnerów.</p>
-        <p>Plantutti to serwis promujący roślinne alternatywy, troskę o planetę oraz… oszczędzanie. Uważamy, że osoby z takimi wartościami powinny mieć równy dostęp do promocji, tak jak ci, którzy żyją „normalnie”. Postanowiłyśmy zmienić świat na lepsze, dając Wam dostęp do roślinnych promocji. A jeśli nie jesteś weganinem, również spoko — zapraszamy!</p>
+      <div class="story-row">
+        <div class="decor decor-star" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="100" fill="var(--color-cream)" />
+            <path d="M100 28 C104 66 134 96 172 100 C134 104 104 134 100 172 C96 134 66 104 28 100 C66 96 96 66 100 28 Z" fill="#fff" />
+          </svg>
+        </div>
+        <div class="story-text">
+          <h2>Nasza historia</h2>
+          <p>Niby spotkałyśmy się na ploteczki przy kawie, ale temat rozmowy przejęła inflacja w Polsce. Zaczęłyśmy porównywać, w którym supermarkecie można najtaniej kupić napój roślinny i tofu. Okazało się, że w gazetkach promocyjnych i aplikacjach supermarketów najczęściej objęte rabatami są przetwory mięsne i sery. Zrodziło to pytanie — czy takie są preferencje klientów? A co z ludźmi, którzy wykluczają mięso z diety dla dobra zwierząt i planety? Czy roślinożercy są skazani na brak promocji?</p>
+        </div>
       </div>
-      <img class="story-image" src="/images/o-nas/historia-2.jpg" alt="Historia Plantutti" loading="lazy" />
+
+      <div class="story-row story-row-reverse">
+        <div class="story-text">
+          <p>Dziś razem tworzymy miejsce, gdzie znajdziecie trzy rodzaje promocji: na sklepowych półkach, w sklepach internetowych i stałe rabaty od naszych partnerów.</p>
+          <p>Plantutti to serwis promujący roślinne alternatywy, troskę o planetę oraz… oszczędzanie. Uważamy, że osoby z takimi wartościami powinny mieć równy dostęp do promocji, tak jak ci, którzy żyją „normalnie”. Postanowiłyśmy zmienić świat na lepsze, dając Wam dostęp do roślinnych promocji. A jeśli nie jesteś weganinem, również spoko — zapraszamy!</p>
+        </div>
+        <div class="decor decor-flower" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <path d="M100 4 C128 44 128 76 100 100 C72 76 72 44 100 4 Z" fill="var(--color-cream)" />
+            <path d="M196 100 C156 128 124 128 100 100 C124 72 156 72 196 100 Z" fill="var(--color-cream)" />
+            <path d="M100 196 C72 156 72 124 100 100 C128 124 128 156 100 196 Z" fill="var(--color-cream)" />
+            <path d="M4 100 C44 72 76 72 100 100 C76 128 44 128 4 100 Z" fill="var(--color-cream)" />
+          </svg>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="container team">
-    <h2>Zespół Plantutti</h2>
-    <div class="team-grid">
-      {team.map((person) => (
-        <div class="person-card">
-          <img class="person-photo" src={`/images/team/${person.photo}`} alt={person.name} loading="lazy" />
-          <p class="person-name">{person.name}</p>
-          <p class="person-role">{person.role}</p>
-          <p class="person-bio">{person.bio}</p>
-          <div class="person-links">
-            {person.links.map((link) => (
-              <a href={link.url} target="_blank" rel="noopener">{link.label}</a>
-            ))}
+  <!-- ===== Zespół Plantutti (beżowy pas, listki w rogach, karty ze zdjęciami nachodzącymi) ===== -->
+  <section class="band band-cream team-band">
+    <SideLeaves class="leaves leaves-left" flip />
+    <SideLeaves class="leaves leaves-right" />
+    <div class="container narrow">
+      <h2 class="center">Zespół Plantutti</h2>
+      <div class="team-grid">
+        {team.map((person) => (
+          <div class="person-card">
+            <img class="person-photo" src={`/images/team/${person.photo}`} alt={person.name} loading="lazy" />
+            <p class="person-name">{person.name}</p>
+            <p class="person-role">{person.role}</p>
+            <div class="person-links">
+              {person.links.map((link) => (
+                <a href={link.url} target="_blank" rel="noopener">{link.label}</a>
+              ))}
+            </div>
+            <p class="person-bio">{person.bio}</p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="container values">
-    <h2>Nasze wartości</h2>
-    <p class="lead">Te wartości stanowią fundament naszej firmy i napędzają nas do dostarczania wyjątkowych promocji, wspierając jednocześnie globalny ruch na rzecz weganizmu.</p>
-    <div class="values-grid">
-      {values.map((v, i) => (
-        <div class="value-card">
-          <span class="value-number">{i + 1}</span>
-          <p class="value-title">{v.title}</p>
-          <p class="value-text">{v.text}</p>
-        </div>
-      ))}
+  <!-- ===== Nasze wartości (białe tło, wielkie blade cyfry) ===== -->
+  <section class="band band-white">
+    <div class="container narrow">
+      <h2>Nasze wartości</h2>
+      <p class="lead">Te wartości stanowią fundament naszej firmy i napędzają nas do dostarczania wyjątkowych promocji, wspierając jednocześnie globalny ruch na rzecz weganizmu.</p>
+      <div class="values-grid">
+        {values.map((v, i) => (
+          <div class="value-item">
+            <span class="value-number" aria-hidden="true">{i + 1}.</span>
+            <div>
+              <p class="value-title">{v.title}</p>
+              <p class="value-text">{v.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-    <p class="quote"><LeafMark size={20} color="var(--color-accent)" /> Nie godzimy się z dyskryminacją roślinożerców w gazetkach promocyjnych!</p>
   </section>
 
-  <section class="container trusted">
-    <h2>Zaufali nam</h2>
-    <p class="lead">Korzystanie z Plantutti jest darmowe i chcemy, aby takie pozostało. Portal utrzymuje się dzięki współpracy z partnerami, którzy udostępnili dla nas kody afiliacyjne.</p>
-    <div class="logos-grid">
-      {partners.map((p) => (
-        <img src={`/${p.logo}`} alt={`Logo ${p.name}`} loading="lazy" />
-      ))}
+  <!-- ===== Cytat (beżowy pas na całą szerokość) ===== -->
+  <section class="band band-cream quote-band">
+    <p class="quote">Nie godzimy się z gazetkami promocyjnymi dyskryminującymi roślinożerców!</p>
+  </section>
+
+  <!-- ===== Zaufali nam ===== -->
+  <section class="band band-white">
+    <div class="container narrow">
+      <h2 class="center">Zaufali nam</h2>
+      <p class="lead center">Korzystanie z Plantutti jest darmowe i chcemy, aby takie pozostało. Portal utrzymuje się dzięki współpracy z partnerami, którzy udostępnili dla nas kody afiliacyjne.</p>
+      <div class="logos-grid">
+        {partners.map((p) => (
+          <div class="logo-tile">
+            <img src={`/${p.logo}`} alt={`Logo ${p.name}`} loading="lazy" />
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .hero-onas {
-    padding: 56px 24px 24px;
+  .band { padding: 64px 0; position: relative; overflow: hidden; }
+  .band-white { background: #fdfdfd; }
+  .band-cream { background: var(--color-cream); }
+  .narrow { max-width: 1000px; padding-left: 24px; padding-right: 24px; }
+
+  h1.page-title {
+    font-family: var(--font-logo);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    margin: 0 0 36px;
+  }
+  h2 {
+    font-family: var(--font-logo);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.4vw, 2.1rem);
+    margin: 0 0 20px;
+  }
+  .center { text-align: center; }
+  .lead { color: var(--color-text-muted); line-height: 1.7; max-width: 640px; margin: 0 0 40px; }
+  .lead.center { margin-left: auto; margin-right: auto; }
+
+  /* --- Nasza historia --- */
+  .story-row {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 40px;
+    grid-template-columns: 0.8fr 1fr;
+    gap: 56px;
     align-items: center;
-    max-width: 1100px;
+    margin-bottom: 40px;
   }
-  .hero-text h1 { margin-bottom: 14px; }
-  .hero-lead { font-size: 1.1rem; color: var(--color-text-muted); line-height: 1.6; }
-  .hero-image {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
-  }
+  .story-row-reverse { grid-template-columns: 1fr 0.8fr; }
+  .story-text p { line-height: 1.8; margin: 0 0 1.1em; }
+  .decor svg { width: 100%; max-width: 280px; height: auto; display: block; margin: 0 auto; }
 
-  .story, .team, .values, .trusted { padding: 32px 24px; max-width: 1020px; }
-  .story-grid {
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    gap: 36px;
-    align-items: center;
-  }
-  .story-text p { line-height: 1.75; margin-bottom: 1em; }
-  .story-image {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card);
-  }
-  h2 { text-align: center; margin-bottom: 24px; }
-  .lead { text-align: center; color: var(--color-text-muted); margin-bottom: 32px; }
-
-  @media (max-width: 760px) {
-    .hero-onas { grid-template-columns: 1fr; text-align: center; }
-    .story-grid { grid-template-columns: 1fr; }
-    .story-image { order: -1; aspect-ratio: 16 / 9; }
-  }
-
+  /* --- Zespół --- */
+  .team-band { padding-top: 72px; padding-bottom: 88px; }
+  .leaves { position: absolute; top: 40px; width: 70px; height: auto; color: #fdfdfd; }
+  .leaves-left { left: 0; }
+  .leaves-right { right: 0; }
   .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
+    gap: 32px;
+    max-width: 640px;
+    margin: 72px auto 0;
   }
   .person-card {
-    background: var(--color-surface);
+    background: #fdfdfd;
     border-radius: var(--radius-xl);
-    padding: 24px;
-    box-shadow: var(--shadow-card);
+    padding: 0 24px 28px;
     text-align: center;
   }
   .person-photo {
-    width: 96px;
-    height: 96px;
+    width: 112px;
+    height: 112px;
     border-radius: 50%;
-    background: var(--color-light-green);
     object-fit: cover;
     display: block;
-    margin: 0 auto 16px;
+    margin: -56px auto 14px;
+    border: 7px solid var(--color-cream);
+    background: var(--color-light-green);
   }
-  .person-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; margin: 0; color: var(--color-primary); }
-  .person-role { font-size: 0.85rem; color: var(--color-text-muted); margin: 2px 0 12px; }
-  .person-bio { font-size: 0.88rem; line-height: 1.6; margin: 0 0 14px; }
-  .person-links { display: flex; gap: 12px; justify-content: center; }
-  .person-links a { font-size: 0.82rem; font-weight: 700; color: var(--color-accent-dark); text-decoration: none; }
+  .person-name { font-family: var(--font-logo); font-size: 1.1rem; margin: 0; color: var(--color-primary); }
+  .person-role { font-size: 0.82rem; color: var(--color-text-muted); margin: 2px 0 10px; }
+  .person-links { display: flex; gap: 14px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .person-links a { font-size: 0.8rem; font-weight: 700; color: var(--color-primary); text-decoration: none; }
   .person-links a:hover { text-decoration: underline; }
+  .person-bio { font-size: 0.85rem; line-height: 1.65; margin: 0; }
 
+  /* --- Wartości --- */
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    margin-bottom: 28px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 48px;
   }
-  .value-card { text-align: center; }
+  .value-item { display: flex; gap: 16px; align-items: flex-start; }
   .value-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--color-bg-alt);
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-family: var(--font-logo);
+    font-size: clamp(3.4rem, 8vw, 5.5rem);
+    line-height: 0.9;
+    color: var(--color-cream);
+    flex-shrink: 0;
+    min-width: 1.1em;
   }
-  .value-title { font-weight: 700; color: var(--color-primary); margin: 0 0 6px; }
-  .value-text { font-size: 0.88rem; color: var(--color-text-muted); margin: 0; }
+  .value-title { font-family: var(--font-logo); font-size: 1rem; margin: 6px 0 8px; color: var(--color-primary); }
+  .value-text { font-size: 0.88rem; font-weight: 700; line-height: 1.6; margin: 0; }
+
+  /* --- Cytat --- */
+  .quote-band { padding: 72px 24px; }
   .quote {
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-family: var(--font-logo);
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    line-height: 1.4;
     color: var(--color-primary);
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* --- Zaufali nam --- */
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 16px;
+  }
+  .logo-tile {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    height: 84px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    padding: 12px;
   }
+  .logo-tile img { max-height: 52px; max-width: 100%; width: auto; object-fit: contain; }
 
-  .logos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 24px;
-    align-items: center;
+  @media (max-width: 760px) {
+    .story-row, .story-row-reverse { grid-template-columns: 1fr; gap: 24px; }
+    .story-row-reverse .decor { order: -1; }
+    .decor svg { max-width: 180px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .leaves { width: 40px; }
   }
-  .logos-grid img { max-height: 48px; width: auto; margin: 0 auto; object-fit: contain; }
 </style>
